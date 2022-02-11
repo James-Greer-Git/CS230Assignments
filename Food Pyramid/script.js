@@ -1,89 +1,44 @@
-var counterValOne = 0;
-
-function incrementCountOne(){
-    updateDisplayOne(++counterValOne);
+.rectangle{
+    position: relative;
+    width: 100%;
+    height: 100px;
 }
-function decrementCountOne(){
-    if(counterValOne == 0){
-        return;
-    }
-    updateDisplayOne(--counterValOne);
+.rectangle:hover .button{
+    visibility: visible;
 }
-function updateDisplayOne(val){
-    document.getElementById("counter_one").innerHTML = val;
+.triangle{
+    clip-path: polygon(50% 0, 30% 100%, 70% 100%);
 }
-
-var counterValTwo = 0;
-
-function incrementCountTwo(){
-    updateDisplayTwo(++counterValTwo);
+.one{
+    background-color: red;
 }
-function decrementCountTwo(){
-    if(counterValTwo == 0){
-        return;
-    }
-    updateDisplayTwo(--counterValTwo);
+.two{
+    background-color: orange;
 }
-function updateDisplayTwo(val){
-    document.getElementById("counter_two").innerHTML = val;
+.three{
+    background-color: yellow;
 }
-
-var counterValThree = 0;
-
-function incrementCountThree(){
-    updateDisplayThree(++counterValThree);
+.four{
+    background-color: blue;
 }
-function decrementCountThree(){
-    if(counterValThree == 0){
-        return;
-    }
-    updateDisplayThree(--counterValThree);
+.five{
+    background-color: brown;
 }
-function updateDisplayThree(val){
-    document.getElementById("counter_three").innerHTML = val;
+.six{
+    background-color: green;
 }
-
-var counterValFour = 0;
-
-function incrementCountFour(){
-    updateDisplayFour(++counterValFour);
-}
-function decrementCountFour(){
-    if(counterValFour == 0){
-        return;
-    }
-    updateDisplayFour(--counterValFour);
-}
-function updateDisplayFour(val){
-    document.getElementById("counter_four").innerHTML = val;
-}
-
-var counterValFive = 0;
-
-function incrementCountFive(){
-    updateDisplayFive(++counterValFive);
-}
-function decrementCountFive(){
-    if(counterValFive == 0){
-        return;
-    }
-    updateDisplayFive(--counterValFive);
-}
-function updateDisplayFive(val){
-    document.getElementById("counter_five").innerHTML = val;
-}
-
-var counterValSix = 0;
-
-function incrementCountSix(){
-    updateDisplaySix(++counterValSix);
-}
-function decrementCountSix(){
-    if(counterValSix == 0){
-        return;
-    }
-    updateDisplaySix(--counterValSix);
-}
-function updateDisplaySix(val){
-    document.getElementById("counter_six").innerHTML = val;
+.button{
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin-top: 50px;
+    margin-left: -50px;
+    margin-right: 50px;
+    padding: 10px;
+    left: 50%;
+    border-color: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    visibility: hidden;
 }
