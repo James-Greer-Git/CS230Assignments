@@ -1,306 +1,71 @@
-var currentHeightOne = "100px";
-var currentHeightTwo = "100px";
-var currentHeightThree = "100px";
-var currentHeightFour = "100px";
-var currentHeightFive = "100px";
-var currentHeightSix = "100px";
-
-var counterOne = 0;
-var counterTwo = 0;
-var counterThree = 0;
-var counterFour = 0;
-var counterFive = 0;
-var counterSix = 0;
-
-var youngChild = false;
-
-function updateHeight(id, instruction){
-    let currentHeight = "";
-    let newHeight = "";
-
-    switch(id){
-        case "one": currentHeight = currentHeightOne;
-        break;
-        case "two": currentHeight = currentHeightTwo;
-        break;
-        case "three": currentHeight = currentHeightThree;
-        break;
-        case "four": currentHeight = currentHeightFour;
-        break;
-        case "five": currentHeight = currentHeightFive;
-        break;
-        case "six": currentHeight = currentHeightSix;
-        break;
-    }
-
-    result = currentHeight.substring(0, 3);
-
-
-    number = parseInt(result);
-    
-    if(instruction == "inc"){
-        number = number + 10;
-    }
-    else{
-        number = number - 10;
-    }
-
-    newHeight = number.toString() + "px";
-    let top_margin = (number - 50) + "px";
-    console.log(top_margin);
-    let counter_id = "counter_" + id;
-
-    switch(id){
-        case "one": currentHeightOne = newHeight;
-        break;
-        case "two": currentHeightTwo = newHeight;
-        break;
-        case "three": currentHeightThree = newHeight;
-        break;
-        case "four": currentHeightFour = newHeight;
-        break;
-        case "five": currentHeightFive = newHeight;
-        break;
-        case "six": currentHeightSix = newHeight;
-        break;  
-    }
-    document.getElementById(id).style.height = newHeight;
-    document.getElementById(counter_id).style.marginTop = top_margin;
+.age_choice{
+    position: relative;
+    width: 15%;
+    left: 34.8%;
 }
-
-function incrementCountOne(){
-    if(counterOne >= 5){
-        return;
-    }
-    id = "one"
-    updateDisplayOne(++counterOne);
-    updateHeight(id, "inc");
+.rectangle{
+    position: relative;
+    width: 100%;
+    height: 100px;
 }
-function decrementCountOne(){
-    if(counterOne == 0){
-        return;
-    }
-    id = "one";
-    updateDisplayOne(--counterOne);
-    updateHeight(id, "dec");
+.rectangle:hover .button{
+    visibility: visible;
 }
-function updateDisplayOne(val){
-    if(val == 0){
-        document.getElementById("counter_one").style.backgroundColor = "white";
-    }
-    else{
-        if(youngChild){
-            
-        }
-        else{
-            if(val > 1){
-                document.getElementById("counter_one").style.backgroundColor = "red";
-            }
-            else{
-                document.getElementById("counter_one").style.backgroundColor = "lime";
-            }
-        }
-    }
-    document.getElementById("counter_one").innerHTML = val;
+.triangle{
+    clip-path: polygon(50% 0, 30% 100%, 70% 100%);
 }
-
-function incrementCountTwo(){
-    if(counterTwo >= 5){
-        return;
-    }
-    id = "two"
-    updateDisplayTwo(++counterTwo);
-    updateHeight(id, "inc");
+.one{
+    background-color: red;
 }
-function decrementCountTwo(){
-    if(counterTwo == 0){
-        return;
-    }
-    id = "two";
-    updateDisplayTwo(--counterTwo);
-    updateHeight(id, "dec");
+#counter_one{
+    visibility: visible;
 }
-function updateDisplayTwo(val){
-    console.log(val);
-    if(val == 0){
-        document.getElementById("counter_two").style.backgroundColor = "white";
-    }
-    else{
-        if(youngChild){
-            
-        }
-        else{
-            if(val > 1){
-                document.getElementById("counter_two").style.backgroundColor = "red";
-            }
-            else{
-                document.getElementById("counter_two").style.backgroundColor = "lime";
-            }
-        }
-    } 
-    document.getElementById("counter_two").innerHTML = val;
+.two{
+    background-color: orange;
 }
-
-function incrementCountThree(){
-    if(counterThree >= 5){
-        return;
-    }
-    id = "three"
-    updateDisplayThree(++counterThree);
-    updateHeight(id, "inc");
+#counter_two{
+    visibility: visible;
 }
-function decrementCountThree(){
-    if(counterThree == 0){
-        return;
-    }
-    id = "three";
-    updateDisplayThree(--counterThree);
-    updateHeight(id, "dec");
+.three{
+    background-color: yellow;
 }
-function updateDisplayThree(val){
-    if(val == 0){
-        document.getElementById("counter_three").style.backgroundColor = "white";
-    }
-    else{
-        if(youngChild){
-            
-        }
-        else{
-            if(val < 2){
-                document.getElementById("counter_three").style.backgroundColor = "yellow";
-            }
-            else if(val == 2){
-                document.getElementById("counter_three").style.backgroundColor = "lime";
-            }
-            else{
-                document.getElementById("counter_three").style.backgroundColor = "red";
-            }
-        }
-    }
-    document.getElementById("counter_three").innerHTML = val;
+#counter_three{
+    visibility: visible;
+    background-color: white;
 }
-
-function incrementCountFour(){
-    if(counterFour >= 10){
-        return;
-    }
-    id = "four"
-    updateDisplayFour(++counterFour);
-    updateHeight(id, "inc");
+.four{
+    background-color: blue;
 }
-function decrementCountFour(){
-    if(counterFour == 0){
-        return;
-    }
-    id = "four";
-    updateDisplayFour(--counterFour);
-    updateHeight(id, "dec");
+#counter_four{
+    visibility: visible;
+    background-color: white;
 }
-function updateDisplayFour(val){
-    if(val == 0){
-        document.getElementById("counter_four").style.backgroundColor = "white";
-    }
-    else{
-        if(youngChild){
-            
-        }
-        else{
-            if(val < 3){
-                document.getElementById("counter_four").style.backgroundColor = "yellow";
-            }
-            else if(val == 3){
-                document.getElementById("counter_four").style.backgroundColor = "lime";
-            }
-            else{
-                document.getElementById("counter_four").style.backgroundColor = "red";
-            }
-        }
-    }
-    document.getElementById("counter_four").innerHTML = val;
+.five{
+    background-color: brown;
 }
-
-function incrementCountFive(){
-    if(counterFive >= 10){
-        return;
-    }
-    id = "five"
-    updateDisplayFive(++counterFive);
-    updateHeight(id, "inc");
+#counter_five{
+    visibility: visible;
+    background-color: white;
 }
-function decrementCountFive(){
-    if(counterFive == 0){
-        return;
-    }
-    id = "five";
-    updateDisplayFive(--counterFive);
-    updateHeight(id, "dec");
+.six{
+    background-color: green;
 }
-function updateDisplayFive(val){
-    if(val == 0){
-        document.getElementById("counter_five").style.backgroundColor = "white";
-    }
-    else{
-        if(youngChild){
-            
-        }
-        else{
-            if(val < 3){
-                document.getElementById("counter_five").style.backgroundColor = "yellow";
-            }
-            else if(val >= 3 && val <= 5){
-                document.getElementById("counter_five").style.backgroundColor = "lime";
-            }
-            else{
-                document.getElementById("counter_five").style.backgroundColor = "red";
-            }
-        }
-    }
-    document.getElementById("counter_five").innerHTML = val;
+#counter_six{
+    visibility: visible;
+    background-color: white;
 }
-
-function incrementCountSix(){
-    if(counterSix >= 10){
-        return;
-    }
-    id = "six"
-    updateDisplaySix(++counterSix);
-    updateHeight(id, "inc");
-}
-function decrementCountSix(){
-    if(counterSix == 0){
-        return;
-    }
-    id = "six";
-    updateDisplaySix(--counterSix);
-    updateHeight(id, "dec");
-}
-function updateDisplaySix(val){
-    if(val == 0){
-        document.getElementById("counter_six").style.backgroundColor = "white";
-    }
-    else{
-        if(youngChild){
-            
-        }
-        else{
-            if(val < 5){
-                document.getElementById("counter_six").style.backgroundColor = "yellow";
-            }
-            else if(val >= 5 && val <= 7){
-                document.getElementById("counter_six").style.backgroundColor = "lime";
-            }
-            else{
-                document.getElementById("counter_six").style.backgroundColor = "red";
-            }
-        }
-    }
-    document.getElementById("counter_six").innerHTML = val;
-}
-function setYoungChild(){
-    youngChild = true;
-    console.log("Young Child? " + youngChild);
-}
-function setAdult(){
-    youngChild = false;
-    console.log("Young Child? " + youngChild);
+.button{
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin-top: 50px;
+    margin-left: -50px;
+    margin-right: 50px;
+    padding: 10px;
+    left: 50%;
+    border-color: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    visibility: hidden;
 }
