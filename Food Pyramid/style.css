@@ -1,48 +1,71 @@
-.triangle{
+.age_choice{
     position: relative;
-    height: 640px;
-    clip-path: polygon(50% 0, 30% 100%, 70% 100%)
+    width: 15%;
+    left: 34.8%;
 }
-.triangle div{
-    background: gray;
+.rectangle{
+    position: relative;
     width: 100%;
     height: 100px;
-    margin: 0 auto 10px;
-    color: black;
-    line-height: 100px;
-    text-align: center;
-    font-size: 0.8em;
 }
-.triangle div:hover .button{
+.rectangle:hover .button{
     visibility: visible;
 }
-.triangle div:hover .label{
-    visibility: visible;
+.triangle{
+    clip-path: polygon(50% 0, 30% 100%, 70% 100%);
 }
-#level_one{
+.one{
     background-color: red;
 }
-#level_two{
+#counter_one{
+    visibility: visible;
+}
+.two{
     background-color: orange;
 }
-#level_three{
+#counter_two{
+    visibility: visible;
+}
+.three{
     background-color: yellow;
 }
-#level_four{
+#counter_three{
+    visibility: visible;
+    background-color: white;
+}
+.four{
     background-color: blue;
 }
-#level_five{
+#counter_four{
+    visibility: visible;
+    background-color: white;
+}
+.five{
     background-color: brown;
 }
-#level_six{
-    background-color: limegreen;
+#counter_five{
+    visibility: visible;
+    background-color: white;
+}
+.six{
+    background-color: green;
+}
+#counter_six{
+    visibility: visible;
+    background-color: white;
 }
 .button{
-   background-color: white;
-   border: 2px solid black;
-   color: black;
-   text-align: center;
-   border-radius: 50%;
-   cursor: pointer;
-   visibility: hidden;
+    background-color: white;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin-top: 50px;
+    margin-left: -50px;
+    margin-right: 50px;
+    padding: 10px;
+    left: 50%;
+    border-color: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    visibility: hidden;
 }
