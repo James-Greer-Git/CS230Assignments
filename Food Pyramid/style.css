@@ -1,7 +1,15 @@
+.age{
+    position: relative;
+    left: 45%;
+    font-weight: bold;
+}
 .age_choice{
     position: relative;
-    width: 15%;
-    left: 34.8%;
+    width: 6%;
+    left: 43.8%;
+}
+.background{
+    background-color: aquamarine;
 }
 .rectangle{
     position: relative;
@@ -13,6 +21,7 @@
 }
 .triangle{
     clip-path: polygon(50% 0, 30% 100%, 70% 100%);
+    font-family: monospace;
 }
 .one{
     background-color: red;
@@ -68,4 +77,8 @@
     border-radius: 50%;
     cursor: pointer;
     visibility: hidden;
+}
+.date_input{
+    font-weight: bolder;
+    text-align: center;
 }
