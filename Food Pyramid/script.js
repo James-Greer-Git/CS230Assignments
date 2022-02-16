@@ -90,6 +90,12 @@ function updateDisplayOne(val){
     }
     else{
         if(youngChild){
+            if(val > 0){
+                document.getElementById("counter_one").style.backgroundColor = "red";
+            }
+            else{
+                document.getElementById("counter_one").style.backgroundColor = "lime";
+            }
             
         }
         else{
@@ -127,7 +133,12 @@ function updateDisplayTwo(val){
     }
     else{
         if(youngChild){
-            
+            if(val > 0){
+                document.getElementById("counter_two").style.backgroundColor = "red"
+            }
+            else{
+                document.getElementById("counter_two").style.backgroundColor = "lime";
+            }
         }
         else{
             if(val > 1){
@@ -163,7 +174,15 @@ function updateDisplayThree(val){
     }
     else{
         if(youngChild){
-            
+            if(val < 3){
+                document.getElementById("counter_three").style.backgroundColor = "yellow";
+            }
+            else if(val >= 3 && val < 5){
+                document.getElementById("counter_three").style.backgroundColor = "lime";
+            }
+            else{
+                document.getElementById("counter_three").style.backgroundColor = "red";
+            }
         }
         else{
             if(val < 2){
@@ -202,7 +221,15 @@ function updateDisplayFour(val){
     }
     else{
         if(youngChild){
-            
+            if(val < 3){
+                document.getElementById("counter_four").style.backgroundColor = "yellow";
+            }
+            else if(val == 3){
+                document.getElementById("counter_four").style.backgroundColor = "lime";
+            }
+            else{
+                document.getElementById("counter_four").style.backgroundColor = "red";
+            }
         }
         else{
             if(val < 3){
@@ -241,7 +268,15 @@ function updateDisplayFive(val){
     }
     else{
         if(youngChild){
-            
+            if(val < 4){
+                document.getElementById("counter_five").style.backgroundColor = "yellow";
+            }
+            else if(val >= 4 && val <= 5){
+                document.getElementById("counter_five").style.backgroundColor = "lime";
+            }
+            else{
+                document.getElementById("counter_five").style.backgroundColor = "red";
+            }
         }
         else{
             if(val < 3){
@@ -280,7 +315,15 @@ function updateDisplaySix(val){
     }
     else{
         if(youngChild){
-            
+            if(val < 4){
+                document.getElementById("counter_six").style.backgroundColor = "yellow";
+            }
+            else if(val >= 4 && val <= 6){
+                document.getElementById("counter_six").style.backgroundColor = "lime";
+            }
+            else{
+                document.getElementById("counter_six").style.backgroundColor = "red";
+            }
         }
         else{
             if(val < 5){
@@ -298,9 +341,35 @@ function updateDisplaySix(val){
 }
 function setYoungChild(){
     youngChild = true;
-    console.log("Young Child? " + youngChild);
+    document.getElementById("age").innerHTML = "Young Child";
+    //console.log("Young Child? " + youngChild);
+    updateDisplayOne(0);
+    updateDisplayTwo(0);
+    updateDisplayThree(0);
+    updateDisplayFour(0);
+    updateDisplayFive(0);
+    updateDisplaySix(0);
+    counterOne = 0;
+    counterTwo = 0;
+    counterThree = 0;
+    counterFour = 0;
+    counterFive = 0;
+    counterSix = 0;
 }
 function setAdult(){
     youngChild = false;
-    console.log("Young Child? " + youngChild);
+    document.getElementById("age").innerHTML = "Adult";
+    //console.log("Young Child? " + youngChild);
+    updateDisplayOne(0);
+    updateDisplayTwo(0);
+    updateDisplayThree(0);
+    updateDisplayFour(0);
+    updateDisplayFive(0);
+    updateDisplaySix(0);
+    counterOne = 0;
+    counterTwo = 0;
+    counterThree = 0;
+    counterFour = 0;
+    counterFive = 0;
+    counterSix = 0; 
 }
