@@ -373,3 +373,7 @@ function setAdult(){
     counterFive = 0;
     counterSix = 0; 
 }
+function dateChange(){
+    console.log("Date set to: ");
+    alert("Enter Today's Date");
+}
