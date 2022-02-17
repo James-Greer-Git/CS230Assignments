@@ -374,6 +374,17 @@ function setAdult(){
     counterSix = 0; 
 }
 function dateChange(){
-    console.log("Date set to: ");
-    alert("Enter Today's Date");
+    var date = document.getElementById("date_input").value;
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = String(today.getFullYear());
+
+    var todayDate = String(yyyy + "-" + mm + "-" + dd);
+    var sameDate = (todayDate == date);
+
+    if(!sameDate){
+        alert("Enter Today's Date");
+    }
+    
 }
