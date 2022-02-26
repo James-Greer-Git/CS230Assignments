@@ -12,7 +12,7 @@ svg{
     
 }
 .ghost{
-    animation: dance 0.2s linear alternate infinite;
+    animation: dance 0.4s linear alternate infinite;
 }
 @keyframes dash {
     from{
