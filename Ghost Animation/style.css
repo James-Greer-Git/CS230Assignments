@@ -1,0 +1,42 @@
+svg{
+    width: 300px;
+    display: block;
+    position: absolute;
+    /* animation: moveDown 5s alternate infinite; */
+}
+.path{
+    stroke-dasharray: 320;
+    stroke-dashoffset: 0;
+    stroke: red;
+    animation: dash 5s linear alternate infinite;
+    
+}
+.ghost{
+    animation: dance 0.2s linear alternate infinite;
+}
+@keyframes dash {
+    from{
+        stroke-dashoffset: 320;
+    }
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes moveDown {
+    from {
+        top : 0px;
+        left: 0px;
+    }
+    to {
+        top: 200px;
+        left: 200px;
+    }
+}
+@keyframes dance {
+    from{
+    transform: rotate(-5deg);
+    }
+    to{
+        transform: rotate(5deg);
+    }
+}
