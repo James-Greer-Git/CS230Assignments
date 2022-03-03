@@ -1,57 +1,39 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 280.173 280.173" style="enable-background:new 0 0 280.173 280.173;" xml:space="preserve">
-<g>
-	<path id = "main_body" style="fill:#E2574C;" d="M133.961,0.145C63.079,3.645,8.824,64.026,8.824,134.908v66.506l0,0c0,15.752,0,48.13,0,65.631
-		c0,6.126,6.126,9.626,11.376,6.126l20.127-12.251c7.876-4.375,17.502-4.375,25.377,0l18.377,10.501
-		c7.876,4.375,17.502,4.375,25.377,0l18.377-10.501c7.876-4.375,17.502-4.375,25.377,0l18.377,10.501
-		c7.876,4.375,17.502,4.375,25.377,0l18.377-10.501c7.876-4.375,17.502-4.375,25.377,0l19.252,11.376
-		c5.251,2.625,11.376-0.875,11.376-6.126c0-18.377,0-50.755,0-65.631l0,0v-70.007C271.349,57.025,209.218-3.355,133.961,0.145z"/>
-	<g>
-		<g>
-			<g>
-				<path id = "shadow" style="fill:#D25147;" d="M26.325,131.408c0-69.132,54.255-126.012,122.512-131.263c-2.625,0-6.126,0-8.751,0
-					C67.454,0.145,8.824,58.776,8.824,131.408c0,0,0,147.889,0,148.765c7.876,0,13.126-3.5,17.502-7.876
-					C26.325,256.545,26.325,131.408,26.325,131.408z"/>
-			</g>
-		</g>
-	</g>
-	<path id = "outer_eye" style="fill:#E4E7E7;" d="M188.216,113.906c-16.627,0-30.628,14.001-30.628,30.628s14.001,30.628,30.628,30.628
-		s30.628-14.001,30.628-30.628S204.843,113.906,188.216,113.906z M91.957,113.906c-16.627,0-30.628,14.001-30.628,30.628
-		s14.001,30.628,30.628,30.628s30.628-14.001,30.628-30.628S108.583,113.906,91.957,113.906z"/>
-	<path id = "inner_eye" style="fill:#324D5B;" d="M188.216,131.408c-7.001,0-13.126,6.126-13.126,13.126c0,7.001,6.126,13.126,13.126,13.126
-		s13.126-6.126,13.126-13.126C201.342,137.533,195.217,131.408,188.216,131.408z M91.957,131.408
-		c-7.001,0-13.126,6.126-13.126,13.126c0,7.001,6.126,13.126,13.126,13.126c7.001,0,13.126-6.126,13.126-13.126
-		C105.083,137.533,98.957,131.408,91.957,131.408z"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
+                    <svg id = "ghost" width="508" height="508" viewBox="0 0 508 508" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="Frame 1" filter="url(#filter0_d_2_2)">
+                            <rect width="500" height="500" transform="translate(4)" fill="white"/>
+                                <g id = "ghost_body">
+                                <path id="body_outline" d="M107.5 123.999C119.5 -13 377.16 3.5 384 123.999C390.84 244.497 384 282.998 384 329.999C384 376.999 417 396.999 417 450.499C417 503.998 345 403 316 420.999C287 438.997 219 454.497 179.5 420.999C140 387.5 63.5 484.999 63.5 443.999C63.5 402.998 96.5415 376.444 107.5 329.999C125.974 251.7 95.5 260.997 107.5 123.999Z" stroke="black" stroke-width="3"/>
+                                    <g id="arms">
+                                    <path id="left_arm" d="M103.5 181.5C67.875 191.5 63.5 160 58.5 124C53.5 88 29 100 21.5 124C14 148 21.5 226.5 109.5 240" stroke="black" stroke-width="3"/>
+                                    <path id="right_arm" d="M388.444 210.867C427.001 217.805 429.257 186.43 431.835 150.574C434.413 114.717 461.317 124.533 471.093 147.553C480.87 170.573 478.859 248.483 386.509 268.961" stroke="black" stroke-width="3"/>
+                                    </g>
+                                    <g id="eyes">
+                                        <g id = "big_eye">
+                                            <circle id="big_eye_outer" cx="314" cy="177" r="40" fill="black"/>
+                                            <circle id="big_eye_inner" cx="314.5" cy="177.5" r="12.5" fill="#C4C4C4"/>
+                                        </g>
+                                        <g id = "small_eye">
+                                            <circle id="small_eye_outer" cx="188" cy="177" r="20" fill="black"/>
+                                            <circle id="small_eye_inner" cx="188" cy="177" r="5" fill="#C4C4C4"/>
+                                        </g>
+                                    </g>
+                                    <g id="mouth">
+                                    <path id="mouth_2" d="M355.5 250.008H148.5C151.574 273.639 191.696 327.077 256.5 327.508C321.304 327.939 357.487 249.087 355.5 250.008Z" fill="black" stroke="black"/>
+                                    <path id="tongue" d="M204 253V329.29C204 360.48 264 361.323 264 329.29V253H204Z" fill="#DA3A3A" stroke="black" stroke-width="3"/>
+                                    <path id="tongue_line" d="M234 250V301.5" stroke="black" stroke-width="3"/>
+                                    </g>
+                                </g>
+                        </g>
+                        <defs>
+                        <filter id="filter0_d_2_2" x="0" y="0" width="508" height="508" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset dy="4"/>
+                        <feGaussianBlur stdDeviation="2"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_2"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_2" result="shape"/>
+                        </filter>
+                        </defs>
+                    </svg>

@@ -1,42 +1,128 @@
-svg{
-    width: 300px;
-    display: block;
-    position: absolute;
-    /* animation: moveDown 5s alternate infinite; */
+.animationDisplayBox{
+    float: left;
+    border: 1px solid black;
+    color: white;
+    height: 520px;
+    width: 520;
+    background-color: grey;
+    margin: left;
+    margin-top: 10px;
+    padding: 10px;
 }
-.path{
-    stroke-dasharray: 320;
-    stroke-dashoffset: 0;
-    stroke: red;
-    animation: dash 5s linear alternate infinite;
-    
+.animationButton{
+    border: none;
+    color: white;
+    padding: 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background-color: #008CBA;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 15px;
 }
-.ghost_dance{
-    animation: dance 0.65s linear alternate infinite;
+.animationButton:hover{
+    background-color: #34849e;
 }
-@keyframes dash {
+.animationButton:active{
+    background-color: #008CBA;
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+}
+.buttonDisplayBox{
+    float: left;
+    border: 1px solid black;
+    color: white;
+    height: 540px;
+    width: 100px;
+    background-color: grey;
+    margin: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px;
+}
+#container {
+  background-color: white;
+  overflow: hidden;
+  height: 540px;
+  width: 1010px;
+}
+#inner {
+  overflow: hidden;
+  width: 2000px;
+}
+.child {
+  float: left;
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+}
+.dance_ghost{
+  animation: dance 0.5s alternate linear infinite;
+}
+.small_eye_inner_expansion{
+  animation: smallEyeInnerExpansion 5s alternate linear infinite;
+}
+.small_eye_outer_expansion{
+  animation: smallEyeOuterExpansion 5s alternate linear infinite;
+}
+.big_eye_inner_shrink{
+  animation: bigEyeInnerShrink 5s alternate linear infinite;
+}
+.big_eye_outer_shrink{
+  animation: bigEyeOuterShrink 5s alternate linear infinite;
+}
+.svgSourceBox{
+    float: left;
+    border: 1px solid black;
+    color: white;
+    height: 540px;
+    width: 400px;
+    background-color: grey;
+    margin: auto;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+}
+@keyframes smallEyeInnerExpansion {
+  from{
+    r: 5;
+  }
+  to{
+    r: 20;
+  }
+}
+@keyframes smallEyeOuterExpansion {
+  from{
+    r: 20;
+  }
+  to{
+    r: 40;
+  }
+}
+@keyframes bigEyeInnerShrink {
     from{
-        stroke-dashoffset: 320;
+      r: 20;
     }
     to{
-        stroke-dashoffset: 0;
+      r: 5;
     }
 }
-@keyframes moveDown {
-    from {
-        top : 0px;
-        left: 0px;
-    }
-    to {
-        top: 200px;
-        left: 200px;
-    }
+@keyframes bigEyeOuterShrink {
+  from{
+    r: 40;
+  }
+  to{
+    r: 20;
+  }
 }
-@keyframes dance {
-    from{
-        transform: rotate(-20deg);
-    }
-    to{
-        transform: rotate(20deg);
-    }
+@keyframes dance{
+  from{
+    transform: rotate(-5deg);
+  }
+  to{
+    transform: rotate(5deg);
+  }
 }
