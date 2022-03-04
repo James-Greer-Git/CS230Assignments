@@ -1,4 +1,6 @@
 
+const svg = document.getElementById("ghost");
+
 function dance(){
     console.log("Dance Button Pressed");
     var svg = document.getElementById("ghost");
@@ -72,6 +74,17 @@ function hide(){
         elements.classList.add("hide_ghost");
     }
 }
+function spin(){
+    console.log("Spin Button Pressed");
+    var svg = document.getElementById("ghost");
+    element = svg.getElementById("ghost_body");
+    if(element.classList.contains("ghost_spin")){
+        element.classList.remove("ghost_spin");
+    }
+    else{
+        element.classList.add("ghost_spin");
+    }
+}
 function reset(){
     var svg = document.getElementById("ghost");
     elements = svg.getElementById("ghost_body");
@@ -88,8 +101,9 @@ function reset(){
     big_eye_outer.classList.remove("big_eye_outer_shrink");
     big_eye_inner.classList.remove("inner_eye_wink");
     big_eye_outer.classList.remove("outer_eye_wink");
+    document.getElementById("svgSourceDisplay").textContent = "";
 }
-function exportSVG(){
+function displayXML(){
     var svg = document.getElementsByClassName("animationDisplayBox")[0].innerHTML;
     document.getElementById("svgSourceDisplay").textContent = svg;
 }

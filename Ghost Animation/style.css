@@ -12,7 +12,7 @@
 .animationButton{
     border: none;
     color: white;
-    padding: 16px;
+    padding: 13px;
     width: 100%;
     text-align: center;
     text-decoration: none;
@@ -91,12 +91,23 @@
   offset-path: path('M20,20 C20,100 200,0 200,100');
   animation: spookyFloat 3000ms infinite alternate ease-in-out;
 }
+.ghost_spin{
+  animation: spin 2s alternate linear infinite;
+}
 @keyframes hide{
   from{
     opacity: 100;
   }
   to{
     opacity: 0;
+  }
+}
+@keyframes spin{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
   }
 }
 
