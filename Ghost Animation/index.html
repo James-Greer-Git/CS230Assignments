@@ -10,12 +10,12 @@
             <div id = "inner">
                 <div class = "buttonDisplayBox">
                     <button class = "animationButton" onclick = "dance()">Dance</button>
-                    <button class = "animationButton" onclick = "eyeShrinkExpand()">Animation 2</button>
-                    <button class = "animationButton" onclick = "animationThree()">Animation 3</button>
-                    <button class = "animationButton" onclick = "animationFour()">Animation 4</button>
-                    <button class = "animationButton" onclick = "animationFive()">Animation 5</button>
+                    <button class = "animationButton" onclick = "eyeShrinkExpand()">Eye Shrink Expand</button>
+                    <button class = "animationButton" onclick = "spookyFloat()">Spooky Float</button>
+                    <button class = "animationButton" onclick = "wink()">Wink</button>
+                    <button class = "animationButton" onclick = "hide()">Hide</button>
                     <button class = "animationButton" onclick = "animationSix()">Animation 6</button>
-                    <button class = "animationButton">Export SVG</button>
+                    <button class = "animationButton" onclick = "exportSVG()">Export SVG</button>
                     <button class = "animationButton" onclick = "reset()">Reset</button>
                 </div>
                 <div class = "animationDisplayBox">
@@ -30,12 +30,12 @@
                                     </g>
                                     <g id="eyes">
                                         <g id = "big_eye">
-                                            <circle id="big_eye_outer" cx="314" cy="177" r="40" fill="black"/>
-                                            <circle id="big_eye_inner" cx="314.5" cy="177.5" r="20" fill="#C4C4C4"/>
+                                            <ellipse id="big_eye_outer" cx="314" cy="177" rx="40" ry="40" fill="black"/>
+                                            <ellipse id="big_eye_inner" cx="314" cy="177" rx ="20" ry="20" fill="#C4C4C4"/>
                                         </g>
                                         <g id = "small_eye">
-                                            <circle id="small_eye_outer" cx="188" cy="177" r="20" fill="black"/>
-                                            <circle id="small_eye_inner" cx="188" cy="177" r="5" fill="#C4C4C4"/>
+                                            <ellipse id="small_eye_outer" cx="188" cy="177" rx="20" ry="20" fill="black"/>
+                                            <ellipse id="small_eye_inner" cx="188" cy="177" rx="5" rx="5" fill="#C4C4C4"/>
                                         </g>
                                     </g>
                                     <g id="mouth">

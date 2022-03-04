@@ -12,7 +12,8 @@
 .animationButton{
     border: none;
     color: white;
-    padding: 14px;
+    padding: 16px;
+    width: 100%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -47,7 +48,7 @@
   background-color: white;
   overflow: hidden;
   height: 540px;
-  width: 1010px;
+  width: 1400;
 }
 #inner {
   overflow: hidden;
@@ -62,60 +63,119 @@
 .dance_ghost{
   animation: dance 0.5s alternate linear infinite;
 }
+.hide_ghost{
+  animation: hide 5s alternate linear;
+}
+.inner_eye_wink{
+  animation: inner_eye_wink 1s ease-in-out;
+}
+.outer_eye_wink{
+  animation: outer_eye_wink 1s ease-in-out;
+}
+.eyeShrinkExpand{
+
+}
 .small_eye_inner_expansion{
-  animation: smallEyeInnerExpansion 5s alternate linear infinite;
+  animation: smallEyeInnerExpansion 2.5s alternate linear infinite;
 }
 .small_eye_outer_expansion{
-  animation: smallEyeOuterExpansion 5s alternate linear infinite;
+  animation: smallEyeOuterExpansion 2.5s alternate linear infinite;
 }
 .big_eye_inner_shrink{
-  animation: bigEyeInnerShrink 5s alternate linear infinite;
+  animation: bigEyeInnerShrink 2.5s alternate linear infinite;
 }
 .big_eye_outer_shrink{
-  animation: bigEyeOuterShrink 5s alternate linear infinite;
+  animation: bigEyeOuterShrink 2.5s alternate linear infinite;
+}
+.spookyFloat {
+  offset-path: path('M20,20 C20,100 200,0 200,100');
+  animation: spookyFloat 3000ms infinite alternate ease-in-out;
+}
+@keyframes hide{
+  from{
+    opacity: 100;
+  }
+  to{
+    opacity: 0;
+  }
+}
+
+@keyframes spookyFloat {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
 }
 .svgSourceBox{
     float: left;
     border: 1px solid black;
     color: white;
     height: 540px;
-    width: 400px;
+    width: 500px;
+    word-wrap: normal;
     background-color: grey;
     margin: auto;
     margin-top: 10px;
     margin-left: 10px;
     padding: 10px;
+    overflow: scroll;
+}
+@keyframes inner_eye_wink {
+  from{
+    ry: 20;
+  }
+  to{
+    ry: 0;
+  }
+}
+@keyframes outer_eye_wink{
+  from{
+    ry: 40;
+  }
+  to{
+    ry: 0;
+  }
 }
 @keyframes smallEyeInnerExpansion {
   from{
-    r: 5;
+    rx: 5;
+    ry: 5;
   }
   to{
-    r: 20;
+    rx: 20;
+    ry: 20;
   }
 }
 @keyframes smallEyeOuterExpansion {
   from{
-    r: 20;
+    rx: 20;
+    ry: 20;
   }
   to{
-    r: 40;
+    rx: 40;
+    ry: 40;
   }
 }
 @keyframes bigEyeInnerShrink {
     from{
-      r: 20;
+      rx: 20;
+      rxy: 20;
     }
     to{
-      r: 5;
+      rx: 5;
+      ry: 5;
     }
 }
 @keyframes bigEyeOuterShrink {
   from{
-    r: 40;
+    rx: 40;
+    ry: 40;
   }
   to{
-    r: 20;
+    rx: 20;
+    ry: 20;
   }
 }
 @keyframes dance{
