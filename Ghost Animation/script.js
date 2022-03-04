@@ -101,6 +101,7 @@ function reset(){
     big_eye_outer.classList.remove("big_eye_outer_shrink");
     big_eye_inner.classList.remove("inner_eye_wink");
     big_eye_outer.classList.remove("outer_eye_wink");
+    element.classList.remove("ghost_spin");
     document.getElementById("svgSourceDisplay").textContent = "";
 }
 function displayXML(){
