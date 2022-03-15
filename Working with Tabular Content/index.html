@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel = "stylesheet" href = "style.css">
+    <title>Grade Sheet</title>
+</head>
+<body>
+    <table id = "grades">
+        <tr id = "headers">
+            <th>Name</th>
+            <th>ID</th>
+            <th>Assignment 1</th>
+            <th>Assignment 2</th>
+            <th>Assignment 3</th>
+            <th>Assignment 4</th>
+            <th>Assignment 5</th>
+            <th>Average(%)</th>
+        </tr>
+        <tr id = "row1">
+            <td>Joe Bloggs</div></td>
+            <td>12345678</td>
+            <td class = "assignment_grade">65</td>
+            <td class = "assignment_grade">65</td>
+            <td class = "assignment_grade">65</td>
+            <td class = "assignment_grade">65</td>
+            <td class = "assignment_grade">65</td>
+            <td class = "assignment_average">%</td>
+        </tr>
+    </table>
+    <button onclick = "addRow()">Add Row</button>
+
+    <script>
+        setInterval(function() {
+            var table = document.getElementById("grades");
+            var rows = table.getElementsByTagName("tr");
+            var cells = table.getElementsByTagName("td");
+            var columns = cells.length/(rows.length - 1);
+            var rowSum = 0;
+            for(var i = 0; i < cells.length; i++){
+                if(i%columns > 1 && i%columns < columns - 1){          //Don't want the Name, ID or Average Cells to be editable
+                    cells[i].onclick = function(){
+                        if(this.hasAttribute("data-clicked")){
+                            return;
+                        }
+                    this.setAttribute("data-clicked", "yes");
+                    this.setAttribute("data-text", this.innerHTML);
+
+                    var input = document.createElement("input");
+                    input.setAttribute("type", "text");
+                    input.value = this.innerHTML;
+                    input.style.width = this.offsetWidth - (this.clientLeft * 2) + "px";
+                    input.style.height = this.offsetHeight - (this.clientTop * 2) + "px";
+                    input.style.border = "0px";
+                    input.style.fontFamily = "inherit";
+                    input.style.fontSize = "inherit";
+                    input.style.textAlign = "inherit";
+                    input.style.backgroundColor = "LightGoldenRodYellow";
+
+                    input.onblur = function(){
+                        var td = input.parentElement;
+                        var originalText = input.parentElement.getAttribute("data-text");
+                        var currentText = this.value;
+
+                        if(!Number.isInteger(parseInt(currentText))){
+                            currentText = "-";
+                        }
+
+                        if(originalText != currentText){
+                            //there are changes in the cell's text
+                            td.removeAttribute("data-clicked");
+                            td.removeAttribute("data-text");
+                            td.innerHTML = currentText;
+                            td.style.cssText = "padding 5px";
+                            //console.log(originalText + " is changed to " + currentText);
+                        }
+                        else{
+                            td.removeAttribute("data-clicked");
+                            td.removeAttribute("data-text");
+                            td.innerHTML = originalText;
+                            td.style.cssText = "padding 5px";
+                            //console.log("No changes made");
+                        }
+                    }
+
+                    input.onkeypress = function(){
+                        if(event.keyCode == 13){
+                            this.blur();
+                        }
+                    }
+
+                    this.innerHTML = "";
+                    this.style.cssText = "padding: 0px 0px";
+                    this.append(input);
+                    this.firstElementChild.select();
+                    }
+                    var value = cells[i].innerHTML;
+                    if(Number.isInteger(parseInt(value))){
+                        rowSum += parseInt(value);
+                    }
+                }
+                else if(i%columns == columns - 1){
+                    console.log(rowSum);
+                    if(rowSum == 0){
+                        cells[i].innerHTML = 0;
+                    }
+                    cells[i].innerHTML = parseInt(rowSum/(columns - 3)) + "%";
+                    console.log(cells[i].innerHTML);
+                    rowSum = 0;
+                }
+
+            }
+
+        }, 1000);
+
+        function addRow(){
+            var table = document.getElementById("grades");
+            columnCount = table.rows[0].cells.length;
+            var row = table.insertRow(-1);
+            
+            for(var i = 0; i < columnCount - 1; i++){
+                var cell = row.insertCell(i);
+                if(i >= 2){
+                    cell.innerHTML = "-";
+                    cell.classList.add("assignment_grade");
+                }
+            }
+            var cell = row.insertCell(columnCount - 1);
+            cell.classList.add("assignment_average");
+            cell.innerHTML = "%";
+        }
+
+
+    </script>
+</body>
+</html>
