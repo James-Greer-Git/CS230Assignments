@@ -1,7 +1,10 @@
 table{
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 75%;
+    width: 1000px;
+}
+.table_info{
+    width: 200px;
 }
 td, th{
     border: 1px solid #dddddd;
@@ -11,6 +14,7 @@ tr:nth-child(even){
 }
 .assignment_grade{
     text-align: right;
+    cursor: pointer;
 }
 .assignment_average{
     text-align: right;
