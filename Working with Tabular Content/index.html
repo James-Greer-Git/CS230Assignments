@@ -19,7 +19,7 @@
             <th style = "cursor: pointer" onclick = "toggleAverage()">Average(%)</th>
         </tr>
         <tr>
-            <td>Tianna Wall</div></td>
+            <td class = "student_name">Tianna Wall</div></td>
             <td>12345670</td>
             <td class = "assignment_grade">65</td>
             <td class = "assignment_grade">0</td>
@@ -29,7 +29,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Anika Campos</div></td>
+            <td class = "student_name">Anika Campos</div></td>
             <td>12345671</td>
             <td class = "assignment_grade">34</td>
             <td class = "assignment_grade">56</td>
@@ -39,7 +39,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Madalynn Bray</div></td>
+            <td class = "student_name">Madalynn Bray</div></td>
             <td>12345672</td>
             <td class = "assignment_grade">23</td>
             <td class = "assignment_grade">56</td>
@@ -49,7 +49,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Rylee Nixon</div></td>
+            <td class = "student_name">Rylee Nixon</div></td>
             <td>12345673</td>
             <td class = "assignment_grade">62</td>
             <td class = "assignment_grade">-</td>
@@ -59,7 +59,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Rowan Dawson</div></td>
+            <td class = "student_name">Rowan Dawson</div></td>
             <td>12345674</td>
             <td class = "assignment_grade">76</td>
             <td class = "assignment_grade">54</td>
@@ -69,7 +69,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Emma Smith</div></td>
+            <td class = "student_name">Emma Smith</div></td>
             <td>12345675</td>
             <td class = "assignment_grade">98</td>
             <td class = "assignment_grade">100</td>
@@ -79,7 +79,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Julianne Boyer</div></td>
+            <td class = "student_name">Julianne Boyer</div></td>
             <td>12345676</td>
             <td class = "assignment_grade">56</td>
             <td class = "assignment_grade">81</td>
@@ -89,7 +89,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>David Harmon</div></td>
+            <td class = "student_name">David Harmon</div></td>
             <td>12345677</td>
             <td class = "assignment_grade">87</td>
             <td class = "assignment_grade">87</td>
@@ -99,7 +99,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Micheal Kerr</div></td>
+            <td class = "student_name">Micheal Kerr</div></td>
             <td>12345678</td>
             <td class = "assignment_grade">76</td>
             <td class = "assignment_grade">98</td>
@@ -109,7 +109,7 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
         <tr>
-            <td>Aiden Calvin</div></td>
+            <td class = "student_name">Aiden Calvin</div></td>
             <td>12345679</td>
             <td class = "assignment_grade">67</td>
             <td class = "assignment_grade">67</td>
@@ -120,8 +120,11 @@
         </tr>
     </table>
     <p></p>
-    <button onclick = "addRow()">Add Row</button>
+    <button onclick = "addRow(-1)">Add Row</button>
     <button onclick = "addColumn()">Add Column</button>
+    <button onclick = "deleteElements()">Delete Highlighted Rows</button>
+    <button onclick = "insertRowAbove(0)">Insert Row Above Highlighted Rows</button>
+    <button onclick = "insertRowAbove(1)">Insert Row Below Highlighted Rows</button>
     <p></p>
     <div class = "table_info">
         <div style = "float: left">Unsubmitted Assignments:</div>
@@ -132,18 +135,37 @@
         setInterval(function() {
             var table = document.getElementById("grades");
             var rows = table.getElementsByTagName("tr");
+            console.log(rows.length);
             var cells = table.getElementsByTagName("td");
             var columns = cells.length/(rows.length - 1);
             var rowSum = 0;
             var unsubmitted = 0;
             for(var i = 0; i < cells.length; i++){
+                if(i%columns === 0){
+                    cells[i].onclick = function(){
+                        row = this.parentElement;
+                        console.log(row);
+                        cells = row.getElementsByTagName("td");
+                        console.log(cells);
+                        for(var j = 0; j < columns; j++){
+                            if(cells[j].classList.contains("highlight")){
+                                cells[j].classList.remove("highlight");
+                                row.classList.remove("highlight");
+                            }
+                            else{
+                                cells[j].classList.add("highlight");
+                                row.classList.add("highlight");
+                            }
+                        }
+                    }
+                }
                 if(i%columns > 1 && i%columns < columns - 1){          //Don't want the Name, ID or Average Cells to be editable              
                     if(cells[i].innerHTML === "-"){
                         unsubmitted++;
                         cells[i].style.backgroundColor = "yellow";
                     }
                     else{
-                        cells[i].style.backgroundColor = "inherit";
+                        //cells[i].style.backgroundColor = "inherit";
                     }
                     cells[i].onclick = function(){
                         if(this.hasAttribute("data-clicked")){
@@ -158,9 +180,9 @@
                     input.style.width = this.offsetWidth - (this.clientLeft * 2) + "px";
                     input.style.height = this.offsetHeight - (this.clientTop * 2) + "px";
                     input.style.border = "0px";
-                    input.style.fontFamily = "inherit";
-                    input.style.fontSize = "inherit";
-                    input.style.textAlign = "inherit";
+                    // input.style.fontFamily = "inherit";
+                    // input.style.fontSize = "inherit";
+                    // input.style.textAlign = "inherit";
                     input.style.backgroundColor = "LightGoldenRodYellow";
 
                     input.onblur = function(){
@@ -300,10 +322,6 @@
                         cells[i].style.color = "white";
                         cells[i].style.backgroundColor = "red";
                     }
-                    else{
-                        cells[i].style.color = "black";
-                        cells[i].style.backgroundColor = "white";
-                    }
                     rowSum = 0;
                 }
 
@@ -313,10 +331,11 @@
 
         }, 1000);
 
-        function addRow(){
+        function addRow(index){
             var table = document.getElementById("grades");
             columnCount = table.rows[0].cells.length;
-            var row = table.insertRow(-1);
+            console.log(index);
+            var row = table.insertRow(index);
             
             for(var i = 0; i < columnCount - 1; i++){
                 var cell = row.insertCell(i);
@@ -349,9 +368,27 @@
                     cell.innerHTML = "-";
                     rows[i].cells[columns - 2].after(cell);
                 }
-            }
-
+            }       
+        }
+        function deleteElements(){
+            var highlightedElements = document.getElementsByClassName("highlight");
+            console.log(highlightedElements);
             
+            while(highlightedElements.length > 0){
+                highlightedElements[0].remove();
+            }
+        }
+        function insertRowAbove(offset){  //need to figure out way to remove highlights if selecting new row
+            var rows = document.getElementsByTagName("tr");
+            var table = document.getElementById("grades");
+            console.log(offset);
+            //console.log(rows);
+            for(var i = 0; i < rows.length; i++){
+                if(rows[i].classList.contains("highlight")){
+                    addRow(i + offset);
+                    break;
+                }
+            }
         }
 
         function toggleAverage(){
