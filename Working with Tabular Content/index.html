@@ -1,3 +1,7 @@
+<!--    Extra Credit Attempted: Highlight Data Row By Clicking Student Name,
+        Delete Selected Data Row and Column
+        Right Click Menu from cell, buttons to add row above or below
+ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +15,11 @@
         <tr id = "headers">
             <th>Name</th>
             <th>ID</th>
-            <th>Assignment 1</th>
-            <th>Assignment 2</th>
-            <th>Assignment 3</th>
-            <th>Assignment 4</th>
-            <th>Assignment 5</th>
+            <th class = "header">Assignment 1</th>
+            <th class = "header">Assignment 2</th>
+            <th class = "header">Assignment 3</th>
+            <th class = "header">Assignment 4</th>
+            <th class = "header">Assignment 5</th>
             <th style = "cursor: pointer" onclick = "toggleAverage()">Average(%)</th>
         </tr>
         <tr>
@@ -119,12 +123,14 @@
             <td class = "assignment_average" id = "percent_grade">%</td>
         </tr>
     </table>
+    <div id = "context-menu">
+        <button class = "item" onclick = "insertRowAbove(0)">Insert Row Above</button>
+        <button class = "item" onclick = "insertRowAbove(1)">Insert Row Below</button>
+    </div>
     <p></p>
     <button onclick = "addRow(-1)">Add Row</button>
     <button onclick = "addColumn()">Add Column</button>
-    <button onclick = "deleteElements()">Delete Highlighted Rows</button>
-    <button onclick = "insertRowAbove(0)">Insert Row Above Highlighted Rows</button>
-    <button onclick = "insertRowAbove(1)">Insert Row Below Highlighted Rows</button>
+    <button onclick = "deleteElements()">Delete Highlighted Cells</button>
     <p></p>
     <div class = "table_info">
         <div style = "float: left">Unsubmitted Assignments:</div>
@@ -132,21 +138,83 @@
     </div>
 
     <script>
+        //right click code found at https://itnext.io/how-to-create-a-custom-right-click-menu-with-javascript-9c368bb58724
+
+        var table = document.getElementById("grades");
+        var rows = table.getElementsByTagName("tr");
+        var cells = table.getElementsByTagName("td");
+
+        for(var i = 0; i < rows.length; i++){       //adding right click listener to show add row above/below selected cell
+            rows[i].addEventListener("contextmenu", function(event){
+            event.preventDefault();
+            var contextElement = document.getElementById("context-menu");
+            contextElement.style.top = event.pageY + "px";
+            contextElement.style.left = event.pageX + "px";
+            contextElement.classList.add("active");
+                rowManipulation(this);              //this calls rowManipulation on the clicked row
+            });
+            window.addEventListener("click", function(){
+            document.getElementById("context-menu").classList.remove("active");
+            voidRowEdit();
+            })
+        }
+        
         setInterval(function() {
+            
             var table = document.getElementById("grades");
             var rows = table.getElementsByTagName("tr");
-            console.log(rows.length);
+            //console.log(rows.length);
+            var headers = table.getElementsByTagName("th");
             var cells = table.getElementsByTagName("td");
+            //console.log(cells.length);
             var columns = cells.length/(rows.length - 1);
+            //console.log(columns);
             var rowSum = 0;
             var unsubmitted = 0;
-            for(var i = 0; i < cells.length; i++){
+            var rowNum = 1;
+            var columnIndex;
+
+            for(var i = 2; i < headers.length - 1; i++){        //adding highlighting function to columns
+                //console.log(headers.length);
+                headers[i].onclick = function(){
+                    let str = this.innerText;
+                    str = str.slice(-1);
+                    // var index = str.length();
+                    index = parseInt(str) + 1;
+                    for(var j = 0; j < rows.length; j++){
+                        if(j === 0){
+                            var cells = rows[j].getElementsByTagName("th");
+                            var cell = cells[index];
+                            if(cell.classList.contains("highlight")){
+                            cell.classList.remove("highlight");
+                            }
+                            else{
+                                cell.classList.add("highlight");
+                                
+                            }
+                        }
+                        else{
+                            var cells = rows[j].getElementsByTagName("td");
+                            var cell = cells[index];
+                            if(cell.classList.contains("highlight")){
+                            cell.classList.remove("highlight");
+                            }
+                            else{
+                            cell.classList.add("highlight");
+                            }
+                        }
+                    }
+                }
+            }
+
+            for(var i = 0; i < cells.length; i++){      //adding highlighting function to rows
                 if(i%columns === 0){
+                    rowNum++;
                     cells[i].onclick = function(){
                         row = this.parentElement;
-                        console.log(row);
+                        //console.log(row);
                         cells = row.getElementsByTagName("td");
-                        console.log(cells);
+                        //console.log(cells);
                         for(var j = 0; j < columns; j++){
                             if(cells[j].classList.contains("highlight")){
                                 cells[j].classList.remove("highlight");
@@ -190,11 +258,8 @@
                         var originalText = input.parentElement.getAttribute("data-text");
                         var currentText = this.value;
 
-                        if(!Number.isInteger(parseInt(currentText))){
-                            currentText = "-";
-                        }
 
-                        if(originalText != currentText){
+                        if(originalText != currentText){        //if the new input text is different from the previous text the new text will be displayed
                             //there are changes in the cell's text
                             td.removeAttribute("data-clicked");
                             td.removeAttribute("data-text");
@@ -211,7 +276,7 @@
                         }
                     }
 
-                    input.onkeypress = function(){
+                    input.onkeypress = function(){  //user presses enter
                         if(event.keyCode == 13){
                             this.blur();
                         }
@@ -223,6 +288,7 @@
                     this.firstElementChild.select();
                     }
                     var value = cells[i].innerHTML;
+                    
                     if(Number.isInteger(parseInt(value))){
                         if(value < 0 || value > 100){
                             cells[i].innerHTML = "-";
@@ -231,14 +297,16 @@
                             rowSum += parseInt(value);
                         }
                     }
+                    else if(value = "-"){
+                        rowSum += 0;
+                    }
                 }
                 else if(i%columns == columns - 1){
-                    if(rowSum == 0){
-                        cells[i].innerHTML = 0;
-                    }
                     var finalGrade = parseInt(rowSum/(columns - 3));
+                    //console.log(finalGrade);
 
                     if(cells[i].id === "percent_grade"){
+                        //console.log(finalGrade);
                         cells[i].innerHTML = finalGrade + "%";
                     }
                     else if(cells[i].id === "letter_grade"){
@@ -329,24 +397,54 @@
             //console.log(unsubmitted);
             document.getElementById("unsubmitted").innerHTML = unsubmitted;
 
-        }, 1000);
+        }, 500);
 
         function addRow(index){
+            console.log("AddRow Clicked");
             var table = document.getElementById("grades");
+            var averages = document.getElementsByClassName("assignment_average");
+            var averageID = averages[0].getAttribute("id");
             columnCount = table.rows[0].cells.length;
-            console.log(index);
+            //console.log(index);
             var row = table.insertRow(index);
             
             for(var i = 0; i < columnCount - 1; i++){
                 var cell = row.insertCell(i);
-                if(i >= 2){
+                if(i === 0){
+                    cell.innerHTML = generateName();
+                    cell.classList.add("student_name");
+                }
+                else if(i === 1){
+                    cell.innerHTML = generateStudentNumber();
+                }
+                else if(i >= 2){
                     cell.innerHTML = "-";
                     cell.classList.add("assignment_grade");
                 }
             }
             var cell = row.insertCell(columnCount - 1);
             cell.classList.add("assignment_average");
+            cell.id = averageID;
             cell.innerHTML = "0%";
+
+            var table = document.getElementById("grades");
+            var rows = table.getElementsByTagName("tr");
+            var cells = table.getElementsByTagName("td");
+
+            for(var i = 0; i < rows.length; i++){   //adding event listeners to new cells, I tried putting this loop inside my setInterval() but it kept breaking addRow()
+                rows[i].addEventListener("contextmenu", function(event){
+                event.preventDefault();
+                var contextElement = document.getElementById("context-menu");
+                contextElement.style.top = event.pageY + "px";
+                contextElement.style.left = event.pageX + "px";
+                contextElement.classList.add("active");
+                    rowManipulation(this);
+                });
+                window.addEventListener("click", function(){
+                document.getElementById("context-menu").classList.remove("active");
+                })
+            }
+            voidRowEdit();
         }
         function addColumn(){
             var table = document.getElementById("grades");
@@ -359,6 +457,7 @@
                 if(i === 0){
                     const cell = document.createElement("th");
                     cell.innerText = "Assignment " + (numAssigments + 1);
+                    cell.classList.add("header");
                     rows[i].cells[columns - 2].after(cell);
                 }
                 else{
@@ -370,28 +469,57 @@
                 }
             }       
         }
+        function rowManipulation(row){      //this add "row_edit" to the classList of each element in the selected row, allowing the insertRowAbove() method to know where to place the new row
+            voidRowEdit();
+            if(row.classList.contains("row_edit")){
+                row.classList.remove("row_edit");
+            }
+            else{
+                row.classList.add("row_edit");
+            }
+            var cells = row.getElementsByTagName("td");
+            //onsole.log(row);
+            for(var i = 0; i < cells.length; i++){
+                if(cells[i].classList.contains("row_edit")){
+                    cells[i].classList.remove("row_edit");
+                }
+                else{
+                    cells[i].classList.add("row_edit");
+                }
+            }
+        }
+        function voidRowEdit(){         //voidRow() cleans up the table to prevent the user from adding more than one row to the table at once
+            var rows = document.getElementsByClassName("row_edit");
+            //console.log(rows);
+            for(var i = 0; i < rows.length; i++){
+                if(rows[i].classList.contains("row_edit")){
+                    rows[i].classList.remove("row_edit");
+                }
+            }
+        }
         function deleteElements(){
             var highlightedElements = document.getElementsByClassName("highlight");
-            console.log(highlightedElements);
+            //console.log(highlightedElements);
             
             while(highlightedElements.length > 0){
                 highlightedElements[0].remove();
             }
         }
         function insertRowAbove(offset){  //need to figure out way to remove highlights if selecting new row
-            var rows = document.getElementsByTagName("tr");
-            var table = document.getElementById("grades");
-            console.log(offset);
+            var row = document.getElementsByTagName("tr");
+            //console.log(row);
+            //console.log(offset);
             //console.log(rows);
             for(var i = 0; i < rows.length; i++){
-                if(rows[i].classList.contains("highlight")){
+                if(rows[i].classList.contains("row_edit")){
                     addRow(i + offset);
                     break;
                 }
             }
+            voidRowEdit();
         }
 
-        function toggleAverage(){
+        function toggleAverage(){       //this allows the user to toggle between different grade representations
             var table = document.getElementById("grades");
             var rows = table.getElementsByTagName("tr");
             var cells = table.getElementsByTagName("td");
@@ -415,7 +543,57 @@
             }
         }
 
+    function generateName(){        //random name generator
+        var firstName = ["Michael",
+            "Christopher",
+            "Jessica",
+            "Matthew",
+            "Ashley",
+            "Jennifer",
+            "Joshua",
+            "Amanda",
+            "Daniel",
+            "David",
+            "James",
+            "Robert",
+            "John",
+            "Joseph",
+            "Andrew",
+            "Ryan",
+            "Brandon",
+            "Jason",
+            "Justin",
+            "Sarah"];
 
+        var lastName = ["Smith",
+            "Johnson",
+            "Williams",
+            "Jones",
+            "Brown",
+            "Davis",
+            "Miller",
+            "Wilson",
+            "Moore",
+            "Taylor",
+            "Anderson",
+            "Thomas",
+            "Jackson",
+            "White",
+            "Harris",
+            "Martin",
+            "Thompson",
+            "Garcia",
+            "Martinez",
+            "Robinson"];
+
+        var name = firstName[Math.floor(Math.random()*(firstName.length))] + " " + lastName[Math.floor(Math.random()*(lastName.length))];
+        return name;
+    }
+
+    function generateStudentNumber(){
+        var number = Math.floor(Math.random()*12345679);
+        return number;
+    }
     </script>
 </body>
 </html>

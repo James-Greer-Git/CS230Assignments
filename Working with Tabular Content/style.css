@@ -1,3 +1,7 @@
+body{
+    margin: 0px;
+    font-family: "Open Sans", sans-serif;
+}
 table{
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -22,6 +26,33 @@ tr:nth-child(even){
 .student_name{
     cursor: pointer;
 }
+.header{
+    cursor: pointer;
+}
 .highlight{
     background-color: goldenrod;
+}
+#context-menu {
+  position: fixed;
+  z-index: 10000;
+  width: 150px;
+  background: #1b1a1a;
+  transform:scale(0);
+  transform-origin: top left;
+}
+#context-menu.active{
+    transform: scale(1);
+    transition: transform 200ms ease-in-out;
+}
+
+#context-menu.visible {
+  display: block;
+}
+#context-menu .item{
+    padding: 8px 10px;
+    font-size: 15px;
+    color: rgb(36, 8, 8);
+}
+#context-menu .item:hover{
+    background: #e7e5e5;
 }
